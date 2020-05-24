@@ -36,43 +36,20 @@
 
     <!-- Main Page content -->
     <div class="container">
-        <h1 id="page_name">A Balanced Load</h1>
+        <center><h1 id='page_name'>Games</h1></center>
         <hr>
-        <p>
-            Learning about insulin and what it does to the body is an important part of learning to deal with and manage
-            your diabetes.
-            In this game we explore just what insulin is, what effect is has on the body, and the correct amount of
-            insulin you need in different situations.
-        </p>
-        <hr>
-        <!-- Categories -->
-        <div>
-            <a href="category.html?category=Health" class="badge badge-primary">Health</a>
-            <a href="category.html?category=Insulin" class="badge badge-primary">Insulin</a>
-            <a href="category.html?category=Diabetic" class="badge badge-primary">Diabetic</a>
-            <a href="category.html?category=Beginner" class="badge badge-primary">Beginner</a>
+        <div class="row row-cols-1 row-cols-sm-2 row-cols-md-4">
+            <div class="col">
+                <div class="card" style="width: 18rem;">
+                    <img src="images/pic01.jpg" class="card-img-top" alt="...">
+                    <div class="card-body">
+                        <center><h5 class="card-title">A Balanced Load</h5></center>
+                        <p class="card-text">Learn the right times to take insulin and what numbers are high or low! <br> <br> Image From: <a href = "https://www.istockphoto.com/">https://www.istockphoto.com/</a></p>
+                        <a href="game1.html" class="btn btn-primary">Play</a>
+                    </div>
+                </div>
+            </div>
         </div>
-        <!-- Game goes here -->
-        <div class="text-center">
-			<iframe src="https://i.simmer.io/@vbayker/a-balanced-load-test" style="width:960px;height:600px;border:0"></iframe>
-        </div>
-	    <h1>Further Learning</h1>
-        <hr>
-        <p>
-            To learn more about insulin and the role it plays in the healthy operation of a human being, please follow the following links:
-        </p>
-        <ul>
-            <li>
-                <a href="http://www.cyh.com/healthtopics/healthtopicdetailskids.aspx?p=335&np=285&id=1722" target="_blank">Further Reading about Diabetes</a>
-            </li>
-            <li>
-                <a href="https://kids.kiddle.co/Insulin" target="_blank">Insulin Facts</a>
-            </li>
-            <li>
-                <a href="https://www.nationwidechildrens.org/specialties/diabetes-clinic/diabetes-calculator-for-kids" target="_blank">Insulin Calculating</a>
-            </li>
-        </ul>
-	    
     </div>
     </div>
 
@@ -87,6 +64,28 @@
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js"
         integrity="sha384-OgVRvuATP1z7JjHLkuOU7Xw704+h835Lr+6QL9UvYjZE3Ipu6Tp75j7Bh/kR0JKI"
         crossorigin="anonymous"></script>
+        <script>
+            // from https://stackoverflow.com/questions/19491336/get-url-parameter-jquery-or-how-to-get-query-string-values-in-js
+            var getUrlParameter = function getUrlParameter(sParam) {
+            var sPageURL = window.location.search.substring(1),
+                sURLVariables = sPageURL.split('&'),
+                sParameterName,
+                i;
+
+            for (i = 0; i < sURLVariables.length; i++) {
+                sParameterName = sURLVariables[i].split('=');
+
+                if (sParameterName[0] === sParam) {
+                    return sParameterName[1] === undefined ? true : decodeURIComponent(sParameterName[1]);
+                }
+            }
+            };
+
+            var name = getUrlParameter("category");
+            console.log(name == 'undefined')
+            if (name == 'undefined') { name = "Games"; }
+            document.getElementById("page_name").innerText = name;
+    </script>
 </body>
 
 </html>
